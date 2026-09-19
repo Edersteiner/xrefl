@@ -4,8 +4,10 @@ package("xrefl")
     set_description("A general-purpose C++ reflection and code generation plugin for XMake")
     set_license("0BSD")
 
-    add_urls("https://github.com/Edersteiner/xrefl.git")
-    add_versions("0.1.0", "b2355c3008a870622b23c572b44c944cdc196eb2")
+    add_urls("https://github.com/Edersteiner/xrefl/archive/refs/tags/$(version).tar.gz",
+             "https://github.com/Edersteiner/xrefl.git",
+             {version = function (version) return "v" .. version end})
+    add_versions("0.1.0", "6f930dfd29ca44ab55d8afa661ad31153d53a4dae3cca7d4ce463b19afd042e3")
 
     on_install(function (package)
         import("package.tools.xmake").install(package)

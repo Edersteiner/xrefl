@@ -13,9 +13,6 @@ xrefl splits it differently. The parser is the tool. The emitter is a Lua
 script you write yourself. xmake is the host because it already has the
 compile flags, dependency tracking, a Lua VM and a package registry.
 
-This is version 0.1.0. Templates, a libclang backend and custom tree-sitter
-queries are not supported, see "Known limits" below.
-
 ## Installing
 
 xrefl installs as an xmake package. tree-sitter and the C++ grammar are

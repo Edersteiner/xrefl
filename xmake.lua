@@ -17,6 +17,9 @@ target("tree-sitter")
     on_install(function (target) end)
     add_files("vendor/tree-sitter/src/lib.c")
     add_includedirs("vendor/tree-sitter/include", {public = true})
+    -- The vendored ICU subset is included as <unicode/...> from src/. A
+    -- machine with ICU installed would otherwise silently supply its own.
+    add_includedirs("vendor/tree-sitter/src")
     -- Strict c11 hides fdopen and the endian conversions on glibc.
     add_defines("_DEFAULT_SOURCE")
 

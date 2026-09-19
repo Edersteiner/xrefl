@@ -54,6 +54,9 @@ function emit_target(units, out)
     end
 
     out.header:write("\nconst xrefl::TypeInfo* const* xrefl_all_types(int* count);\n")
+    -- A definition, so including the aggregate twice would be a compile error
+    -- if it did not guard itself.
+    out.header:write("inline constexpr int xrefl_type_count = %d;\n", #symbols)
     out:write("static const xrefl::TypeInfo* const all_types[] = {\n")
     for _, symbol in ipairs(symbols) do
         out:write("    &type_info_%s(),\n", symbol)

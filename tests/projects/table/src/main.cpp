@@ -1,10 +1,12 @@
 #include <cstdio>
 
 #include "table.xrefl.all.h"
+#include "table.xrefl.all.h"
 
 int main() {
     int count = 0;
     const xrefl::TypeInfo* const* types = xrefl_all_types(&count);
+    static_assert(xrefl_type_count == 2);
     std::printf("%d reflected types\n", count);
     for (int i = 0; i < count; ++i) {
         const xrefl::TypeInfo& info = *types[i];

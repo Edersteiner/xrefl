@@ -15,3 +15,11 @@ struct Types {
     PROPERTY() glm::vec3 position;
     PROPERTY() ns::Deep::Inner value;
 };
+
+REFLECT()
+struct Accessors {
+    METHOD() int& by_ref();
+    METHOD() int&& by_rref();
+    METHOD() const std::string& named(int index) const;
+    METHOD() static Accessors& instance();
+};

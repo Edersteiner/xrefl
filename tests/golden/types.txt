@@ -272,6 +272,110 @@
       "methods": [],
       "line": 2,
       "column": 1
+    },
+    {
+      "name": "Accessors",
+      "namespace": "",
+      "kind": "struct",
+      "annotations": [
+        {
+          "name": "REFLECT",
+          "args": "",
+          "line": 19,
+          "column": 1
+        }
+      ],
+      "bases": [],
+      "fields": [],
+      "methods": [
+        {
+          "name": "by_ref",
+          "return_type": "int&",
+          "access": "public",
+          "params": [],
+          "static": false,
+          "virtual": false,
+          "const": false,
+          "pure": false,
+          "annotations": [
+            {
+              "name": "METHOD",
+              "args": "",
+              "line": 21,
+              "column": 5
+            }
+          ],
+          "line": 21,
+          "column": 14
+        },
+        {
+          "name": "by_rref",
+          "return_type": "int&&",
+          "access": "public",
+          "params": [],
+          "static": false,
+          "virtual": false,
+          "const": false,
+          "pure": false,
+          "annotations": [
+            {
+              "name": "METHOD",
+              "args": "",
+              "line": 22,
+              "column": 5
+            }
+          ],
+          "line": 22,
+          "column": 14
+        },
+        {
+          "name": "named",
+          "return_type": "const std::string&",
+          "access": "public",
+          "params": [
+            {
+              "name": "index",
+              "type": "int"
+            }
+          ],
+          "static": false,
+          "virtual": false,
+          "const": true,
+          "pure": false,
+          "annotations": [
+            {
+              "name": "METHOD",
+              "args": "",
+              "line": 23,
+              "column": 5
+            }
+          ],
+          "line": 23,
+          "column": 14
+        },
+        {
+          "name": "instance",
+          "return_type": "Accessors&",
+          "access": "public",
+          "params": [],
+          "static": true,
+          "virtual": false,
+          "const": false,
+          "pure": false,
+          "annotations": [
+            {
+              "name": "METHOD",
+              "args": "",
+              "line": 24,
+              "column": 5
+            }
+          ],
+          "line": 24,
+          "column": 14
+        }
+      ],
+      "line": 20,
+      "column": 1
     }
   ],
   "enums": [],

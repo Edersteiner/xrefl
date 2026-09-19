@@ -167,11 +167,23 @@ TSNode UnitBuilder::innermost_declarator_id(TSNode declarator) {
     return declarator;
 }
 
+// A reference declarator holds its inner declarator as an unnamed child, so
+// `T& f()` is only found by scanning past the field lookup.
 TSNode UnitBuilder::find_function_declarator(TSNode declarator) {
     TSNode current = declarator;
-    while (!ts_node_is_null(current)) {
+    for (int guard = 0; guard < 64 && !ts_node_is_null(current); ++guard) {
         if (is_type(current, "function_declarator")) return current;
         TSNode next = ts_node_child_by_field_name(current, "declarator", 10);
+        if (ts_node_is_null(next)) {
+            uint32_t count = ts_node_named_child_count(current);
+            for (uint32_t i = 0; i < count; ++i) {
+                TSNode child = ts_node_named_child(current, i);
+                if (std::strstr(ts_node_type(child), "declarator") != nullptr) {
+                    next = child;
+                    break;
+                }
+            }
+        }
         if (ts_node_is_null(next)) break;
         current = next;
     }

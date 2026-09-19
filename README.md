@@ -44,14 +44,32 @@ An emitter named `@xrefl/<name>.lua` is one of the reference emitters that
 ship with the package. The runtime headers they generate against are added to
 the include path for you.
 
-### Vendored instead
+### From a checkout instead
 
 If you would rather keep xrefl in your own tree, as a submodule or a copy,
-`includes()` it and configure through functions instead of a table:
+`includes()` it. The rule is then called `xrefl` and takes the same table:
 
 ```lua
 includes("third_party/xrefl/xmake/xrefl.lua")
 
+target("mygame")
+    add_rules("xrefl", {
+        annotations = {
+            REFLECT  = { applies_to = "struct", args = { category = "string?" } },
+            PROPERTY = { applies_to = "field",  args = { range = "table?", asset = "string?" } },
+        },
+        emitters = { "tools/emit_registry.lua" },
+        headers  = { "src/**.h" },
+    })
+```
+
+The parser is found in the checkout's own build directory once you have run
+`xmake` there, or through the `XREFL` environment variable, or on `PATH`.
+
+The same configuration can be written as functions, which read better when a
+target has a lot to declare:
+
+```lua
 target("mygame")
     add_rules("xrefl")
 
@@ -68,11 +86,10 @@ target("mygame")
     reflect_headers("src/**.h")
 ```
 
-Both forms configure the same thing. A rule that ships inside a package cannot
-add functions to xmake's description scope, so the packaged form takes a
-table. Everything below that point is the same code.
+A rule that ships inside a package cannot add functions to xmake's description
+scope, which is why the packaged form only takes the table.
 
-| Packaged | Vendored | What it does |
+| Table | Function | What it does |
 | --- | --- | --- |
 | `annotations = {...}` | `reflect_annotation(name, opts)` | declares an annotation and its arguments |
 | `emitters = {...}` | `reflect_emitter(script)` | adds an emitter, several per target is normal |

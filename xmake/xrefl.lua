@@ -1,8 +1,16 @@
--- Entry point for the vendored form of the plugin.
+-- Entry point for the checkout form of the plugin.
 --
 --   includes("path/to/xrefl/xmake/xrefl.lua")
 --
 --   target("mygame")
+--       add_rules("xrefl", {
+--           annotations = { REFLECT = { applies_to = "struct" } },
+--           emitters = { "@xrefl/emit_registry.lua" },
+--           headers = { "src/**.h" },
+--       })
+--
+-- The same configuration can be given through functions instead:
+--
 --       add_rules("xrefl")
 --       reflect_annotation("REFLECT", { applies_to = "struct" })
 --       reflect_emitter("tools/emit_registry.lua")
@@ -11,6 +19,7 @@
 add_moduledirs(path.join(os.scriptdir(), "modules"))
 
 local XREFL_ROOT = os.scriptdir()
+local CHECKOUT = path.directory(XREFL_ROOT)
 
 -- Plain functions rather than xmake scope APIs, so a table can be serialised
 -- into the string list add_values stores. Called inside target(), they apply
@@ -52,8 +61,13 @@ rule("xrefl")
     add_deps("plugin.compile_commands.autoupdate")
 
     on_load(function (target)
+        import("xrefl.configure")
         import("xrefl.plan")
         target:data_set("xrefl.root", XREFL_ROOT)
+        configure.apply(target, target:extraconf("rules", "xrefl"),
+                        path.join(CHECKOUT, "emitters"))
+        -- The runtime headers the reference emitters generate against.
+        target:add("includedirs", path.join(CHECKOUT, "runtime"), {public = true})
         plan.attach(target)
     end)
 

@@ -1,0 +1,7 @@
+2 reflected types
+game::Door (category="world")
+    state        offset=0 size=1
+    speed        offset=4 size=4
+game::Lamp (category="")
+    on           offset=0 size=1
+    flicker      offset=4 size=4 transient

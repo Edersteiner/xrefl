@@ -1,5 +1,5 @@
 set_project("xrefl")
-local version = "0.1.0"
+local version = "0.2.0"
 set_version(version)
 set_languages("c11", "cxx17")
 set_warnings("all")

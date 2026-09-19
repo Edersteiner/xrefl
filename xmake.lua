@@ -35,6 +35,9 @@ target("xrefl")
     add_deps("tree-sitter", "tree-sitter-cpp")
     add_includedirs("src")
     add_defines('XREFL_VERSION="' .. version .. '"')
+    if is_plat("windows") then
+        add_defines("_CRT_SECURE_NO_WARNINGS")
+    end
 
     -- What the installed package carries besides the binary.
     add_installfiles("runtime/(xrefl/*.h)", {prefixdir = "include"})

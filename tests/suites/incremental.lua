@@ -31,6 +31,8 @@ end
 
 function _setup(work)
     os.tryrm(work)
+    -- The include path goes into a Lua string literal, where a backslash is
+    -- an escape.
     os.mkdir(path.join(work, "src"))
     os.mkdir(path.join(work, "tools"))
     io.writefile(path.join(work, "xmake.lua"), ([[
@@ -46,7 +48,7 @@ target("incr")
     reflect_annotation("PROPERTY", { applies_to = "field" })
     reflect_emitter("tools/emit.lua")
     reflect_headers("src/*.h")
-]]):format(path.join(os.projectdir(), "xmake", "xrefl.lua")))
+]]):format((path.join(os.projectdir(), "xmake", "xrefl.lua"):gsub("\\", "/"))))
     io.writefile(path.join(work, "tools", "emit.lua"), EMITTER)
     io.writefile(path.join(work, "src", "alpha.h"), _header("Alpha", "PROPERTY() int a;"))
     io.writefile(path.join(work, "src", "beta.h"), _header("Beta", "PROPERTY() float b;"))

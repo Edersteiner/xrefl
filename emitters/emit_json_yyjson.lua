@@ -1,6 +1,9 @@
 -- Reference emitter: JSON serialization through yyjson. Copy it and change
 -- it. Generates against runtime/xrefl/json_yyjson.h.
 
+-- Byte order, so the output is the same on every machine.
+import("xrefl.order")
+
 local TYPE_ANNOTATION = "REFLECT"
 local FIELD_ANNOTATION = "PROPERTY"
 
@@ -273,7 +276,7 @@ function emit(unit, out)
     for header in pairs(needed) do
         table.insert(sorted, header)
     end
-    table.sort(sorted)
+    order.sort(sorted)
     for _, header in ipairs(sorted) do
         out.header:write("#include \"%s\"\n", header)
     end
@@ -299,7 +302,7 @@ function emit_target(units, out)
     if #records == 0 then
         return
     end
-    table.sort(records, function (a, b) return a.qualified_name < b.qualified_name end)
+    table.sort(records, function (a, b) return order.bytewise(a.qualified_name, b.qualified_name) end)
 
     out.header:write("\n#include <xrefl/json_yyjson.h>\n")
     out.header:write("\n// Every polymorphic type reflected in this target.\n")

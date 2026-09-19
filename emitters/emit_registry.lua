@@ -1,6 +1,9 @@
 -- Reference emitter: field tables and type registration. Copy it and change
 -- it. Generates against runtime/xrefl/registry.h, which is an example too.
 
+-- Byte order, so the output is the same on every machine.
+import("xrefl.order")
+
 -- Change these to match your scheme.
 local TYPE_ANNOTATION = "REFLECT"
 local FIELD_ANNOTATION = "PROPERTY"
@@ -50,7 +53,7 @@ function emit(unit, out)
     for name in pairs(needed) do
         table.insert(sorted, name)
     end
-    table.sort(sorted)
+    order.sort(sorted)
     for _, name in ipairs(sorted) do
         out.header:write("#include \"%s\"\n", name)
     end
@@ -123,7 +126,7 @@ function emit_target(units, out)
             table.insert(records, record)
         end
     end
-    table.sort(records, function (a, b) return a.qualified_name < b.qualified_name end)
+    table.sort(records, function (a, b) return order.bytewise(a.qualified_name, b.qualified_name) end)
 
     out.header:write("\n#include <xrefl/registry.h>\n")
     out.header:write("\n// Every type reflected in this target.\n")

@@ -9,7 +9,7 @@ package("xrefl")
              {version = function (version) return "v" .. version end})
     add_versions("0.1.0", "6f930dfd29ca44ab55d8afa661ad31153d53a4dae3cca7d4ce463b19afd042e3")
 
-    on_install(function (package)
+    on_install("@windows", "@linux", "@macosx", function (package)
         import("package.tools.xmake").install(package)
     end)
 

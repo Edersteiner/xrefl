@@ -55,11 +55,13 @@ end
 -- How generated code spells an #include of the header: relative to the
 -- shortest matching include directory, so it matches what the project writes.
 -- Falls back to project-relative, never absolute, so output is reproducible.
+-- xmake stores a target's include directories relative to the project, not
+-- to the xmake.lua that declared them.
 function _include_path(target, header)
     local dirs = table.wrap(target:get("includedirs"))
     local best
     for _, dir in ipairs(dirs) do
-        local absolute = path.absolute(dir, target:scriptdir())
+        local absolute = path.absolute(dir, os.projectdir())
         local relative = path.relative(header, absolute)
         if relative and not relative:startswith("..") then
             if not best or #relative < #best then

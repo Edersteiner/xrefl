@@ -1,0 +1,15 @@
+3 types
+game::Door (size=28, bases=1)
+    state        std::uint8_t     offset=12 size=1
+    speed        float            offset=16 size=4
+game::Entity (size=12, bases=0)
+    id           std::uint32_t    offset= 0 size=4
+    x            float            offset= 4 size=4
+    y            float            offset= 8 size=4
+game::world::Portal (size=16, bases=1)
+    destination  int              offset=12 size=4
+Door derives from Entity: 1
+Portal derives from Entity: 1
+Entity derives from Door: 0
+read back speed = 12.5
+wrong type gives null: 1

@@ -1,0 +1,15 @@
+# Xmake cache
+.xmake/
+build/
+
+# MacOS Cache
+.DS_Store
+
+# Test project build output
+tests/projects/**/build/
+tests/projects/**/.xmake/
+tests/projects/**/compile_commands.json
+tests/projects/**/repo/packages/**/build/
+
+# Copied from packages/x/xrefl/rules by xmake check
+tests/projects/packaged/repo/packages/x/xrefl/rules/

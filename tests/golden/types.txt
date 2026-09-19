@@ -1,0 +1,280 @@
+{
+  "path": "types.h",
+  "includes": [],
+  "structs": [
+    {
+      "name": "Types",
+      "namespace": "",
+      "kind": "struct",
+      "annotations": [
+        {
+          "name": "REFLECT",
+          "args": "",
+          "line": 1,
+          "column": 1
+        }
+      ],
+      "bases": [],
+      "fields": [
+        {
+          "name": "plain",
+          "type": "int",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 3,
+              "column": 5
+            }
+          ],
+          "line": 3,
+          "column": 16
+        },
+        {
+          "name": "pointer",
+          "type": "const MeshHandle*",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 4,
+              "column": 5
+            }
+          ],
+          "line": 4,
+          "column": 16
+        },
+        {
+          "name": "reference",
+          "type": "float&",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 5,
+              "column": 5
+            }
+          ],
+          "line": 5,
+          "column": 16
+        },
+        {
+          "name": "rvalue",
+          "type": "double&&",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 6,
+              "column": 5
+            }
+          ],
+          "line": 6,
+          "column": 16
+        },
+        {
+          "name": "array",
+          "type": "int[4]",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 7,
+              "column": 5
+            }
+          ],
+          "line": 7,
+          "column": 16
+        },
+        {
+          "name": "grid",
+          "type": "char[2][3]",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 8,
+              "column": 5
+            }
+          ],
+          "line": 8,
+          "column": 16
+        },
+        {
+          "name": "pointers",
+          "type": "int*[8]",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 9,
+              "column": 5
+            }
+          ],
+          "line": 9,
+          "column": 16
+        },
+        {
+          "name": "callback",
+          "type": "void (*)(int, float)",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 10,
+              "column": 5
+            }
+          ],
+          "line": 10,
+          "column": 16
+        },
+        {
+          "name": "flags",
+          "type": "unsigned int",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "3",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 11,
+              "column": 5
+            }
+          ],
+          "line": 11,
+          "column": 16
+        },
+        {
+          "name": "shared",
+          "type": "int",
+          "access": "public",
+          "static": true,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 12,
+              "column": 5
+            }
+          ],
+          "line": 12,
+          "column": 16
+        },
+        {
+          "name": "dirty",
+          "type": "bool",
+          "access": "public",
+          "static": false,
+          "mutable": true,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 13,
+              "column": 5
+            }
+          ],
+          "line": 13,
+          "column": 16
+        },
+        {
+          "name": "nested",
+          "type": "std::vector<std::pair<int, float>>",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 14,
+              "column": 5
+            }
+          ],
+          "line": 14,
+          "column": 16
+        },
+        {
+          "name": "position",
+          "type": "glm::vec3",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 15,
+              "column": 5
+            }
+          ],
+          "line": 15,
+          "column": 16
+        },
+        {
+          "name": "value",
+          "type": "ns::Deep::Inner",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 16,
+              "column": 5
+            }
+          ],
+          "line": 16,
+          "column": 16
+        }
+      ],
+      "methods": [],
+      "line": 2,
+      "column": 1
+    }
+  ],
+  "enums": [],
+  "functions": []
+}
+--- exit: 0 ---

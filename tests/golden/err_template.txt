@@ -1,0 +1,3 @@
+err_template.h:2:1: error: annotation 'REFLECT' is on a template [annotated-template]
+  note: templates are not supported; annotate an explicit instantiation, or write the reflection data for this type by hand
+--- exit: 1 ---

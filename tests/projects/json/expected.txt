@@ -1,0 +1,15 @@
+{"title":"Atrium","doors":[{"id":7,"name":"north","state":"Ajar","speed":2.5,"tint":[1.0,0.5,0.0],"tags":["heavy","locked"]}]}
+read back: 1
+title=Atrium doors=1
+id=7 name=north state=2 speed=2.5 tint=(1.0,0.5,0.0) tags=2
+animCursor stayed at its default: 0.00
+old file reads: 1, id=3, speed kept default 99.0
+wrong type rejected: 1
+-- polymorphic --
+{"$type":"shapes::Square","name":"tile","width":3.0,"height":3.0,"locked":true}
+loaded: 1
+concrete type is Square: 1
+name=tile width=3.0 locked=1
+loads as Rect too: 1
+unrelated type refused: 1
+unknown type refused: 1

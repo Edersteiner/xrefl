@@ -1,0 +1,91 @@
+{
+  "path": "enums.h",
+  "includes": [],
+  "structs": [],
+  "enums": [
+    {
+      "name": "DoorState",
+      "namespace": "",
+      "underlying": "uint8_t",
+      "scoped": true,
+      "values": [
+        {
+          "name": "Closed",
+          "value": ""
+        },
+        {
+          "name": "Open",
+          "value": "3"
+        },
+        {
+          "name": "Ajar",
+          "value": "Open + 1"
+        }
+      ],
+      "annotations": [
+        {
+          "name": "REFLECT",
+          "args": "",
+          "line": 1,
+          "column": 1
+        }
+      ],
+      "line": 2,
+      "column": 1
+    },
+    {
+      "name": "Legacy",
+      "namespace": "",
+      "underlying": "",
+      "scoped": false,
+      "values": [
+        {
+          "name": "A",
+          "value": ""
+        },
+        {
+          "name": "B",
+          "value": ""
+        },
+        {
+          "name": "C",
+          "value": ""
+        }
+      ],
+      "annotations": [
+        {
+          "name": "REFLECT",
+          "args": "",
+          "line": 8,
+          "column": 1
+        }
+      ],
+      "line": 9,
+      "column": 1
+    },
+    {
+      "name": "Nested",
+      "namespace": "deep::inner",
+      "underlying": "",
+      "scoped": true,
+      "values": [
+        {
+          "name": "One",
+          "value": ""
+        }
+      ],
+      "annotations": [
+        {
+          "name": "REFLECT",
+          "args": "",
+          "line": 12,
+          "column": 1
+        }
+      ],
+      "line": 13,
+      "column": 1
+    }
+  ],
+  "functions": []
+}
+--- exit: 0 ---

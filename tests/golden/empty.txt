@@ -1,0 +1,32 @@
+{
+  "path": "empty.h",
+  "includes": [],
+  "structs": [
+    {
+      "name": "Ignored",
+      "namespace": "",
+      "kind": "struct",
+      "annotations": [],
+      "bases": [],
+      "fields": [
+        {
+          "name": "a",
+          "type": "int",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [],
+          "line": 3,
+          "column": 5
+        }
+      ],
+      "methods": [],
+      "line": 2,
+      "column": 1
+    }
+  ],
+  "enums": [],
+  "functions": []
+}
+--- exit: 0 ---

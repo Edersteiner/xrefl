@@ -1,0 +1,2 @@
+error: xrefl: src/thing.h:5:5: annotation 'PROPERTY' has no argument 'rnage'
+  note: it accepts range

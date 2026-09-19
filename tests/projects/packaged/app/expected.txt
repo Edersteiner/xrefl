@@ -1,0 +1,4 @@
+1 types from the installed package
+    std::int32_t x at 0
+    std::int32_t y at 4
+    float density at 8

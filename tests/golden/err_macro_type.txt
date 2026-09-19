@@ -1,0 +1,3 @@
+err_macro_type.h:3:5: error: the declaration annotated with 'PROPERTY' could not be parsed [unparsable-declaration]
+  note: a macro in type position, or a construct the syntactic parser does not model; simplify the declaration or write its reflection data by hand
+--- exit: 1 ---

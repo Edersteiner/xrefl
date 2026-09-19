@@ -1,0 +1,5 @@
+err_absorbed.h:2:1: error: the declaration annotated with 'REFLECT' is swallowed by a declaration that starts at 'PACKED_STRUCT' [absorbed-declaration]
+  note: if 'PACKED_STRUCT' is a macro, declare it with reflect_ignore_macro("PACKED_STRUCT") so the parser can skip over it
+err_absorbed.h:4:5: error: the declaration annotated with 'PROPERTY' is not a kind xrefl reflects [unsupported-declaration]
+  note: annotations apply to structs, classes, unions, enums, fields, methods and free functions
+--- exit: 1 ---

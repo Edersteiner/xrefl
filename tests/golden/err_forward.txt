@@ -1,0 +1,5 @@
+err_forward.h:2:1: error: annotation 'REFLECT' is on a declaration with no body [annotated-forward-declaration]
+  note: annotate the definition of the type instead
+err_forward.h:5:1: error: annotation 'REFLECT' is on a declaration with no body [annotated-forward-declaration]
+  note: annotate the definition of the enum instead
+--- exit: 1 ---

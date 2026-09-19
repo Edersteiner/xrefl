@@ -1,0 +1,236 @@
+{
+  "path": "multi_declarator.h",
+  "includes": [],
+  "structs": [
+    {
+      "name": "Multi",
+      "namespace": "",
+      "kind": "struct",
+      "annotations": [
+        {
+          "name": "REFLECT",
+          "args": "",
+          "line": 1,
+          "column": 1
+        }
+      ],
+      "bases": [],
+      "fields": [
+        {
+          "name": "x",
+          "type": "float",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 3,
+              "column": 5
+            }
+          ],
+          "line": 3,
+          "column": 16
+        },
+        {
+          "name": "y",
+          "type": "float",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 3,
+              "column": 5
+            }
+          ],
+          "line": 3,
+          "column": 16
+        },
+        {
+          "name": "z",
+          "type": "float",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 3,
+              "column": 5
+            }
+          ],
+          "line": 3,
+          "column": 16
+        },
+        {
+          "name": "a",
+          "type": "int",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 4,
+              "column": 5
+            }
+          ],
+          "line": 4,
+          "column": 16
+        },
+        {
+          "name": "b",
+          "type": "int *",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 4,
+              "column": 5
+            }
+          ],
+          "line": 4,
+          "column": 16
+        },
+        {
+          "name": "c",
+          "type": "int[3]",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 4,
+              "column": 5
+            }
+          ],
+          "line": 4,
+          "column": 16
+        },
+        {
+          "name": "d",
+          "type": "int **",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 4,
+              "column": 5
+            }
+          ],
+          "line": 4,
+          "column": 16
+        },
+        {
+          "name": "first",
+          "type": "const char *",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 5,
+              "column": 5
+            }
+          ],
+          "line": 5,
+          "column": 16
+        },
+        {
+          "name": "second",
+          "type": "const char *",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 5,
+              "column": 5
+            }
+          ],
+          "line": 5,
+          "column": 16
+        }
+      ],
+      "methods": [
+        {
+          "name": "one",
+          "return_type": "void",
+          "access": "public",
+          "params": [],
+          "static": false,
+          "virtual": false,
+          "const": false,
+          "pure": false,
+          "annotations": [
+            {
+              "name": "METHOD",
+              "args": "",
+              "line": 6,
+              "column": 5
+            }
+          ],
+          "line": 6,
+          "column": 14
+        },
+        {
+          "name": "two",
+          "return_type": "void",
+          "access": "public",
+          "params": [
+            {
+              "name": "",
+              "type": "int"
+            }
+          ],
+          "static": false,
+          "virtual": false,
+          "const": false,
+          "pure": false,
+          "annotations": [
+            {
+              "name": "METHOD",
+              "args": "",
+              "line": 6,
+              "column": 5
+            }
+          ],
+          "line": 6,
+          "column": 14
+        }
+      ],
+      "line": 2,
+      "column": 1
+    }
+  ],
+  "enums": [],
+  "functions": []
+}
+--- exit: 0 ---

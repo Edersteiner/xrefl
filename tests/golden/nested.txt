@@ -1,0 +1,110 @@
+{
+  "path": "nested.h",
+  "includes": [],
+  "structs": [
+    {
+      "name": "Nested",
+      "namespace": "outer::inner::Host",
+      "kind": "struct",
+      "annotations": [
+        {
+          "name": "REFLECT",
+          "args": "",
+          "line": 7,
+          "column": 5
+        }
+      ],
+      "bases": [],
+      "fields": [
+        {
+          "name": "value",
+          "type": "float",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 9,
+              "column": 9
+            }
+          ],
+          "line": 9,
+          "column": 20
+        }
+      ],
+      "methods": [],
+      "line": 8,
+      "column": 5
+    },
+    {
+      "name": "Host",
+      "namespace": "outer::inner",
+      "kind": "struct",
+      "annotations": [
+        {
+          "name": "REFLECT",
+          "args": "",
+          "line": 3,
+          "column": 1
+        }
+      ],
+      "bases": [],
+      "fields": [
+        {
+          "name": "own",
+          "type": "int",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 5,
+              "column": 5
+            }
+          ],
+          "line": 5,
+          "column": 16
+        }
+      ],
+      "methods": [],
+      "line": 4,
+      "column": 1
+    }
+  ],
+  "enums": [
+    {
+      "name": "Mode",
+      "namespace": "outer::inner::Host",
+      "underlying": "",
+      "scoped": true,
+      "values": [
+        {
+          "name": "A",
+          "value": ""
+        },
+        {
+          "name": "B",
+          "value": ""
+        }
+      ],
+      "annotations": [
+        {
+          "name": "REFLECT",
+          "args": "",
+          "line": 12,
+          "column": 5
+        }
+      ],
+      "line": 13,
+      "column": 5
+    }
+  ],
+  "functions": []
+}
+--- exit: 0 ---

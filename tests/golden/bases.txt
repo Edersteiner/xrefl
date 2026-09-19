@@ -1,0 +1,146 @@
+{
+  "path": "bases.h",
+  "includes": [],
+  "structs": [
+    {
+      "name": "Multi",
+      "namespace": "game",
+      "kind": "struct",
+      "annotations": [
+        {
+          "name": "REFLECT",
+          "args": "",
+          "line": 3,
+          "column": 1
+        }
+      ],
+      "bases": [
+        {
+          "name": "Entity",
+          "access": "public",
+          "virtual": false
+        },
+        {
+          "name": "::ns::Base<int>",
+          "access": "protected",
+          "virtual": false
+        },
+        {
+          "name": "a::b::Other",
+          "access": "private",
+          "virtual": true
+        }
+      ],
+      "fields": [
+        {
+          "name": "x",
+          "type": "int",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 5,
+              "column": 5
+            }
+          ],
+          "line": 5,
+          "column": 16
+        }
+      ],
+      "methods": [],
+      "line": 4,
+      "column": 1
+    },
+    {
+      "name": "Defaulted",
+      "namespace": "game",
+      "kind": "class",
+      "annotations": [
+        {
+          "name": "REFLECT",
+          "args": "",
+          "line": 8,
+          "column": 1
+        }
+      ],
+      "bases": [
+        {
+          "name": "Entity",
+          "access": "private",
+          "virtual": false
+        },
+        {
+          "name": "Renderable",
+          "access": "private",
+          "virtual": true
+        }
+      ],
+      "fields": [
+        {
+          "name": "hidden",
+          "type": "int",
+          "access": "private",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 10,
+              "column": 5
+            }
+          ],
+          "line": 10,
+          "column": 16
+        },
+        {
+          "name": "shown",
+          "type": "int",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 12,
+              "column": 5
+            }
+          ],
+          "line": 12,
+          "column": 16
+        },
+        {
+          "name": "guarded",
+          "type": "int",
+          "access": "protected",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 14,
+              "column": 5
+            }
+          ],
+          "line": 14,
+          "column": 16
+        }
+      ],
+      "methods": [],
+      "line": 9,
+      "column": 1
+    }
+  ],
+  "enums": [],
+  "functions": []
+}
+--- exit: 0 ---

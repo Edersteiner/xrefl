@@ -1,0 +1,3 @@
+err_unattached.h:3:5: error: annotation 'PROPERTY' is not attached to a declaration [unattached-annotation]
+  note: an annotation must come directly before the declaration it describes
+--- exit: 1 ---

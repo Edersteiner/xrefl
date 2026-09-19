@@ -1,0 +1,172 @@
+{
+  "path": "lexer.h",
+  "includes": [],
+  "structs": [
+    {
+      "name": "Lexing",
+      "namespace": "",
+      "kind": "struct",
+      "annotations": [
+        {
+          "name": "REFLECT",
+          "args": "",
+          "line": 4,
+          "column": 1
+        }
+      ],
+      "bases": [],
+      "fields": [
+        {
+          "name": "million",
+          "type": "int",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 7,
+              "column": 5
+            }
+          ],
+          "line": 7,
+          "column": 16
+        },
+        {
+          "name": "hexed",
+          "type": "int",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 8,
+              "column": 5
+            }
+          ],
+          "line": 8,
+          "column": 16
+        },
+        {
+          "name": "quote",
+          "type": "char",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 9,
+              "column": 5
+            }
+          ],
+          "line": 9,
+          "column": 16
+        },
+        {
+          "name": "backslash",
+          "type": "char",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 10,
+              "column": 5
+            }
+          ],
+          "line": 10,
+          "column": 16
+        },
+        {
+          "name": "text",
+          "type": "const char*",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 13,
+              "column": 5
+            }
+          ],
+          "line": 13,
+          "column": 16
+        },
+        {
+          "name": "raw",
+          "type": "const char*",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 14,
+              "column": 5
+            }
+          ],
+          "line": 14,
+          "column": 16
+        },
+        {
+          "name": "plain_raw",
+          "type": "const char*",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 15,
+              "column": 5
+            }
+          ],
+          "line": 15,
+          "column": 16
+        },
+        {
+          "name": "REFLECT",
+          "type": "int",
+          "access": "public",
+          "static": false,
+          "mutable": false,
+          "bitfield": "",
+          "annotations": [
+            {
+              "name": "PROPERTY",
+              "args": "",
+              "line": 18,
+              "column": 5
+            }
+          ],
+          "line": 18,
+          "column": 16
+        }
+      ],
+      "methods": [],
+      "line": 5,
+      "column": 1
+    }
+  ],
+  "enums": [],
+  "functions": []
+}
+--- exit: 0 ---

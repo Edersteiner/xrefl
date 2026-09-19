@@ -24,6 +24,20 @@ function content(target, target_scheme)
             end
             table.insert(lines, ("// %s: applies to %s"):format(name, applies))
         end
+        -- Flags and valued arguments listed apart, since they are written
+        -- differently: PROPERTY(transient, range = {0, 1}).
+        local flags, valued = {}, {}
+        for arg, typespec in pairs(declaration.args or {}) do
+            table.insert(typespec == "flag" and flags or valued, arg)
+        end
+        table.sort(flags)
+        table.sort(valued)
+        if #flags > 0 then
+            table.insert(lines, "//   flags: " .. table.concat(flags, ", "))
+        end
+        if #valued > 0 then
+            table.insert(lines, "//   arguments: " .. table.concat(valued, ", "))
+        end
         table.insert(lines, ("#define %s(...)"):format(name))
     end
     table.insert(lines, "")

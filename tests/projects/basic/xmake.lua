@@ -13,7 +13,7 @@ target("basic")
     })
     reflect_annotation("PROPERTY", {
         applies_to = "field",
-        args = { range = "table?", asset = "string?", transient = "boolean?" },
+        args = { range = "table?", asset = "string?", transient = "flag" },
     })
 
     reflect_emitter("tools/emit_fields.lua")

@@ -4,4 +4,4 @@ game::Door (category="world")
     speed        offset=4 size=4
 game::Lamp (category="")
     on           offset=0 size=1
-    flicker      offset=4 size=4
+    flicker      offset=4 size=4 transient

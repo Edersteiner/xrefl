@@ -1,0 +1,2 @@
+error: xrefl: src/thing.h:5:5: annotation 'PROPERTY' argument 'transient' is a flag, it takes no value
+  note: write it bare, as in PROPERTY(transient)

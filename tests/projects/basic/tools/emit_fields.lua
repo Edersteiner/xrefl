@@ -27,9 +27,10 @@ function emit(unit, out)
 
             out:write("static const xrefl::FieldInfo %s_fields[] = {\n", record.symbol)
             for _, field in ipairs(fields) do
-                out:write("    { \"%s\", offsetof(%s, %s), sizeof(decltype(%s::%s)) },\n",
+                out:write("    { \"%s\", offsetof(%s, %s), sizeof(decltype(%s::%s)), %s },\n",
                           field.name, record.qualified_name, field.name,
-                          record.qualified_name, field.name)
+                          record.qualified_name, field.name,
+                          field.annotations.PROPERTY.transient and "true" or "false")
             end
             out:write("};\n\n")
 

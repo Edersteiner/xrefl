@@ -14,7 +14,7 @@ struct Door {
 REFLECT()
 struct Lamp {
     PROPERTY() bool on;
-    PROPERTY(transient = true) float flicker;
+    PROPERTY(transient) float flicker;
 };
 
 }  // namespace game

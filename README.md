@@ -32,7 +32,7 @@ target("mygame")
     add_rules("@xrefl/reflect", {
         annotations = {
             REFLECT  = { applies_to = {"struct", "enum"}, args = { category = "string?" } },
-            PROPERTY = { applies_to = "field",  args = { range = "table?" } },
+            PROPERTY = { applies_to = "field",  args = { range = "table?", transient = "flag" } },
         },
         emitters = { "@xrefl/emit_registry.lua", "tools/emit_custom.lua" },
         headers  = { "src/**.h" },
@@ -101,7 +101,16 @@ annotations from the source text.
 `applies_to` takes one kind or a list of them: `"struct"`, `"class"`,
 `"union"`, `"enum"`, `"field"`, `"function"`. Argument types are `"string"`,
 `"number"`, `"boolean"`, `"table"` or `"any"`, with a `?` on the end for
-optional. A misspelled argument is an error, not a silent no-op:
+optional, and `"flag"`. A flag is written bare:
+
+```cpp
+PROPERTY(transient, range = {0.1, 20.0}) float speed;
+```
+
+`transient` here is `transient = true`, and an emitter reads it as such. A
+flag is always optional and takes no value; `transient = 3` is an error.
+
+A misspelled argument is an error, not a silent no-op:
 
 ```
 src/door.h:10:5: annotation 'PROPERTY' has no argument 'rnage'
@@ -186,7 +195,7 @@ to look types up by name.
   depth, without the emitter knowing anything about it. Declare that pair in
   the header where the type is declared. Generated code sees exactly what the
   annotated header includes and nothing else.
-- `PROPERTY(transient = true)` keeps a field out of the serialized form while
+- `PROPERTY(transient)` keeps a field out of the serialized form while
   leaving it visible to every other emitter.
 - A derived type's functions call its base's first, so inherited fields end up
   in the same object instead of nested or flattened by hand.
@@ -194,7 +203,7 @@ to look types up by name.
   document handling for you when you have a single value.
 
 **Polymorphic serialization** is what the base class tracking is for. Mark the
-root with `REFLECT(polymorphic = true)`. Types deriving from it are registered
+root with `REFLECT(polymorphic)`. Types deriving from it are registered
 too, without repeating the marking.
 
 ```cpp

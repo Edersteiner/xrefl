@@ -7,6 +7,7 @@ struct FieldInfo {
     const char* name;
     std::size_t offset;
     std::size_t size;
+    bool transient;
 };
 
 struct TypeInfo {

@@ -7,7 +7,7 @@ namespace shapes {
 
 // Root of a polymorphic hierarchy. Needs a virtual destructor, and every
 // concrete type must be default constructible.
-REFLECT(polymorphic = true)
+REFLECT(polymorphic)
 struct Shape {
     virtual ~Shape() = default;
     PROPERTY() std::string name;
@@ -32,7 +32,7 @@ struct Square : Rect {
 };
 
 // Reflected but not a Shape. Loading it as one must fail.
-REFLECT(polymorphic = true)
+REFLECT(polymorphic)
 struct Marker {
     virtual ~Marker() = default;
     PROPERTY() int index = 0;

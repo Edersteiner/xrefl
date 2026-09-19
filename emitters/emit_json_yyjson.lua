@@ -4,11 +4,11 @@
 local TYPE_ANNOTATION = "REFLECT"
 local FIELD_ANNOTATION = "PROPERTY"
 
--- REFLECT(polymorphic = true) opts a type in. Reflected types deriving from
+-- REFLECT(polymorphic) opts a type in. Reflected types deriving from
 -- it are registered too.
 local POLYMORPHIC_ARG = "polymorphic"
 
--- `transient = true` keeps a field out of the serialized form.
+-- `PROPERTY(transient)` keeps a field out of the serialized form.
 function _serialized_fields(record)
     local fields = {}
     for _, field in ipairs(record.fields) do

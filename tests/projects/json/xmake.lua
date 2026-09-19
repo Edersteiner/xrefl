@@ -12,8 +12,8 @@ target("json")
 
     reflect_annotation("REFLECT", {
         applies_to = {"struct", "enum"},
-        args = { polymorphic = "boolean?" },
+        args = { polymorphic = "flag" },
     })
-    reflect_annotation("PROPERTY", { applies_to = "field", args = { transient = "boolean?" } })
+    reflect_annotation("PROPERTY", { applies_to = "field", args = { transient = "flag" } })
     reflect_emitter("../../../emitters/emit_json_yyjson.lua")
     reflect_headers("src/*.h")

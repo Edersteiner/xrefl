@@ -4,10 +4,54 @@
 
 import("core.base.json")
 
+-- Splits the argument text at the commas between arguments: the ones at
+-- depth zero outside strings. Nothing inside `{}`, `()` or quotes counts.
+function _split_arguments(text)
+    local items = {}
+    local depth = 0
+    local quote = nil
+    local start = 1
+    local i = 1
+    while i <= #text do
+        local c = text:sub(i, i)
+        if quote then
+            if c == "\\" then
+                i = i + 1
+            elseif c == quote then
+                quote = nil
+            end
+        elseif c == '"' or c == "'" then
+            quote = c
+        elseif c == "{" or c == "(" or c == "[" then
+            depth = depth + 1
+        elseif c == "}" or c == ")" or c == "]" then
+            depth = depth - 1
+        elseif c == "," and depth == 0 then
+            table.insert(items, text:sub(start, i - 1))
+            start = i + 1
+        end
+        i = i + 1
+    end
+    table.insert(items, text:sub(start))
+    return items
+end
+
+-- A bare name is a flag: `PROPERTY(transient)` reads as `transient = true`.
+function _expand_flags(text)
+    local items = _split_arguments(text)
+    for i, item in ipairs(items) do
+        local name = item:match("^%s*([%a_][%w_]*)%s*$")
+        if name and name ~= "true" and name ~= "false" and name ~= "nil" then
+            items[i] = name .. " = true"
+        end
+    end
+    return table.concat(items, ",")
+end
+
 -- string.deserialize evaluates in a restricted environment, so an annotation
 -- is data and cannot reach anything.
 function _evaluate(text, where)
-    local value, errors = ("{" .. text .. "\n}"):deserialize()
+    local value, errors = ("{" .. _expand_flags(text) .. "\n}"):deserialize()
     if errors then
         raise("xrefl: %s: cannot read annotation arguments (%s)\n  note: %s", where, text,
               errors)
@@ -15,7 +59,12 @@ function _evaluate(text, where)
     return value or {}
 end
 
+-- A flag is present or absent. Written bare or as `name = true`, never with
+-- another value.
 function _check_type(value, typespec)
+    if typespec == "flag" then
+        return value == nil or value == true, "flag"
+    end
     local optional = typespec:sub(-1) == "?"
     local wanted = optional and typespec:sub(1, -2) or typespec
     if value == nil then
@@ -53,7 +102,10 @@ function _validate(name, args, declaration, where)
                   #known > 0 and table.concat(known, ", ") or "no arguments")
         end
         local ok, wanted = _check_type(value, schema[key])
-        if not ok then
+        if not ok and wanted == "flag" then
+            raise("xrefl: %s: annotation '%s' argument '%s' is a flag, it takes no value\n" ..
+                  "  note: write it bare, as in %s(%s)", where, name, key, name, key)
+        elseif not ok then
             raise("xrefl: %s: annotation '%s' argument '%s' must be a %s, got a %s",
                   where, name, key, wanted, type(value))
         end

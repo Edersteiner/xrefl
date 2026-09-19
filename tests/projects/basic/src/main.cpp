@@ -10,8 +10,9 @@ int main() {
         const xrefl::TypeInfo& info = *types[i];
         std::printf("%s (category=\"%s\")\n", info.name, info.category);
         for (int f = 0; f < info.field_count; ++f) {
-            std::printf("    %-12s offset=%zu size=%zu\n", info.fields[f].name,
-                        info.fields[f].offset, info.fields[f].size);
+            std::printf("    %-12s offset=%zu size=%zu%s\n", info.fields[f].name,
+                        info.fields[f].offset, info.fields[f].size,
+                        info.fields[f].transient ? " transient" : "");
         }
     }
     return 0;

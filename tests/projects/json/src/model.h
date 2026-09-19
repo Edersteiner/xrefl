@@ -33,7 +33,7 @@ struct Door : Entity {
     PROPERTY() float speed = 1.0f;
     PROPERTY() Colour tint;                       // reaches the hand-written pair
     PROPERTY() std::vector<std::string> tags;     // container of a leaf
-    PROPERTY(transient = true) float animCursor = 0.0f;
+    PROPERTY(transient) float animCursor = 0.0f;
 };
 
 REFLECT()

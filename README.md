@@ -19,6 +19,8 @@ xrefl installs as an xmake package. tree-sitter and the C++ grammar are
 vendored as C source, so building it needs a C++ compiler and nothing else.
 No LLVM, no npm, no grammar generation step.
 
+Note: Currently waiting on xrepo submission
+
 ```lua
 add_requires("xrefl")
 

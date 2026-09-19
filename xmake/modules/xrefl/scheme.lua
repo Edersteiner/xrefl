@@ -2,6 +2,7 @@
 -- including anything inherited from a package or dependency.
 
 import("core.base.json")
+import("xrefl.order")
 
 local PAYLOAD_DIR = path.join("share", "xrefl")
 
@@ -163,8 +164,7 @@ function annotation_names(scheme)
     for name, _ in pairs(scheme.annotations) do
         table.insert(names, name)
     end
-    table.sort(names)
-    return names
+    return order.sort(names)
 end
 
 -- Fingerprint of everything other than the headers that changes generated

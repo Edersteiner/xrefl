@@ -15,6 +15,8 @@ struct TypeInfo {
     const char* category;
     const FieldInfo* fields;
     int field_count;
+    double low;
+    double high;
 };
 
 }  // namespace xrefl

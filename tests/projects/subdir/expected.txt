@@ -1,7 +1,9 @@
-2 reflected types
-game::Door (category="world")
+3 reflected types
+game::Speaker (category="audio" range=0.5..2.25)
+    gain         offset=0 size=4
+game::Door (category="world" range=0.1..20)
     state        offset=0 size=1
     speed        offset=4 size=4
-game::Lamp (category="")
+game::Lamp (category="" range=0..0)
     on           offset=0 size=1
     flicker      offset=4 size=4 transient

@@ -68,8 +68,32 @@ function _check(tally, project, mode, opt)
     end
 end
 
+-- A locale that writes a decimal comma and collates past punctuation, when
+-- the machine has one. Generated output must not change under it.
+function _comma_locale()
+    local listing = try { function () return os.iorun("locale -a") end }
+    if not listing then
+        return nil
+    end
+    local installed = {}
+    for name in listing:gmatch("[^\r\n]+") do
+        installed[name:lower():gsub("-", "")] = name
+    end
+    for _, want in ipairs({"de_de.utf8", "sv_se.utf8", "en_se.utf8", "fr_fr.utf8"}) do
+        if installed[want] then
+            return installed[want]
+        end
+    end
+    return nil
+end
+
 function main(xrefl, opt)
     _envs = {XREFL = xrefl}
+    local locale = _comma_locale()
+    if locale then
+        _envs.LC_ALL = locale
+        print("locale: %s", locale)
+    end
 
     -- The packaged test's repo gets the shipped rule copied in, so there is
     -- one copy to maintain.

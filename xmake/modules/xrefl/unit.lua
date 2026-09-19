@@ -3,6 +3,7 @@
 -- declared schema.
 
 import("core.base.json")
+import("xrefl.order")
 
 -- Splits the argument text at the commas between arguments: the ones at
 -- depth zero outside strings. Nothing inside `{}`, `()` or quotes counts.
@@ -96,7 +97,7 @@ function _validate(name, args, declaration, where)
             for declared in pairs(schema) do
                 table.insert(known, declared)
             end
-            table.sort(known)
+            order.sort(known)
             raise("xrefl: %s: annotation '%s' has no argument '%s'\n  note: it accepts %s",
                   where, name, key,
                   #known > 0 and table.concat(known, ", ") or "no arguments")

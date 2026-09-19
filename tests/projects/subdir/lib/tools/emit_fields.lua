@@ -34,10 +34,19 @@ function emit(unit, out)
             end
             out:write("};\n\n")
 
+            -- The range bounds are written as numbers on purpose: they must
+            -- come out with a full stop whatever the locale.
+            local low, high = 0, 0
+            for _, field in ipairs(fields) do
+                local range = field.annotations.PROPERTY.range
+                if range then
+                    low, high = range[1], range[2]
+                end
+            end
             out:write("const xrefl::TypeInfo& type_info_%s() {\n", record.symbol)
-            out:write("    static const xrefl::TypeInfo info{ \"%s\", \"%s\", %s_fields, %d };\n",
+            out:write("    static const xrefl::TypeInfo info{ \"%s\", \"%s\", %s_fields, %d, %s, %s };\n",
                       record.qualified_name, record.annotations.REFLECT.category or "",
-                      record.symbol, #fields)
+                      record.symbol, #fields, low, high)
             out:write("    return info;\n}\n\n")
         end
     end

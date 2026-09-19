@@ -1,6 +1,7 @@
 -- Generates the header defining the annotation macros. They expand to
 -- nothing. The parser reads annotations from the source text.
 
+import("xrefl.order")
 import("xrefl.scheme")
 
 function content(target, target_scheme)
@@ -30,8 +31,8 @@ function content(target, target_scheme)
         for arg, typespec in pairs(declaration.args or {}) do
             table.insert(typespec == "flag" and flags or valued, arg)
         end
-        table.sort(flags)
-        table.sort(valued)
+        order.sort(flags)
+        order.sort(valued)
         if #flags > 0 then
             table.insert(lines, "//   flags: " .. table.concat(flags, ", "))
         end

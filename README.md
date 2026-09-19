@@ -187,6 +187,14 @@ Emitters run in xmake's module sandbox. `pcall`, `select`, `load` and `error`
 are not available. `assert`, `type`, `table.pack`, `table.unpack` and
 `string.format` are.
 
+Generated output must not depend on the machine that built it. Two things
+in Lua do: string order follows the process locale's collation, and
+`tostring` on a number follows its decimal point. Headers are ordered by
+byte, and `out:write` spells a number argument with a full stop whatever the
+locale, so format one with `%s`. `out:number(value)` does the same for a
+number you concatenate yourself. `import("xrefl.order")` has the byte-order
+comparator for lists of your own.
+
 ## Reference emitters
 
 `emitters/` holds working emitters and `runtime/` the headers they generate

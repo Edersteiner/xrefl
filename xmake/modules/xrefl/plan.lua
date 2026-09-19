@@ -2,6 +2,7 @@
 -- load time, before parsing, which works because there is one generated file
 -- per header no matter how many emitters run.
 
+import("xrefl.order")
 import("xrefl.paths")
 
 function headers(target)
@@ -18,7 +19,7 @@ function headers(target)
             end
         end
     end
-    table.sort(found)
+    order.sort(found)
     return found
 end
 

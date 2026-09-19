@@ -168,7 +168,8 @@ function annotation_names(scheme)
 end
 
 -- Fingerprint of everything other than the headers that changes generated
--- output. Dependency tracking keys on it.
+-- output. Dependency tracking keys on it. An emitter may import helpers
+-- beside it, so every Lua file in its directory counts as part of it.
 function fingerprint(scheme)
     local parts = {}
     for _, name in ipairs(annotation_names(scheme)) do
@@ -176,8 +177,16 @@ function fingerprint(scheme)
                      string.serialize(scheme.annotations[name],
                                       {strip = true, indent = false, orderkeys = true}))
     end
+    local hashed = {}
     for _, script in ipairs(scheme.emitters) do
-        table.insert(parts, script .. ":" .. (os.isfile(script) and hash.sha256(script) or "?"))
+        local siblings = os.isfile(script) and os.files(path.join(path.directory(script), "*.lua"))
+                         or {script}
+        for _, file in ipairs(order.sort(siblings)) do
+            if not hashed[file] then
+                hashed[file] = true
+                table.insert(parts, file .. ":" .. (os.isfile(file) and hash.sha256(file) or "?"))
+            end
+        end
     end
     for _, macro in ipairs(scheme.ignore_macros) do
         table.insert(parts, "ignore:" .. macro)

@@ -294,7 +294,8 @@ needs at compile time is a different question, and the C++ compiler's own
 dependency tracking already handles that.
 
 Generation reruns when any of these change: the header's content, an emitter
-script, an annotation declaration, the ignored macros, the set of headers
+script or any Lua file in its directory (an emitter may `import` a helper
+beside it), an annotation declaration, the ignored macros, the set of headers
 matched, or the parser binary itself. Deleting a generated file by hand brings
 it back. Deleting a header removes its output.
 

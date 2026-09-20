@@ -7,8 +7,7 @@ package("xrefl")
     add_urls("https://github.com/Edersteiner/xrefl/archive/refs/tags/$(version).tar.gz",
              "https://github.com/Edersteiner/xrefl.git",
              {version = function (version) return "v" .. version end})
-    add_versions("0.2.1", "PENDING")
-    add_versions("0.1.0", "6f930dfd29ca44ab55d8afa661ad31153d53a4dae3cca7d4ce463b19afd042e3")
+    add_versions("0.2.1", "f1998b47c91a2d5a2fe9972e2d8cd3b3b5588ddf7a3eb93d321530c3b682fa38")
 
     on_install("@windows", "@linux", "@macosx", function (package)
         import("package.tools.xmake").install(package)

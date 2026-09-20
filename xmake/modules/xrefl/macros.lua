@@ -1,8 +1,8 @@
 -- Generates the header defining the annotation macros. They expand to
 -- nothing. The parser reads annotations from the source text.
 
-import("xrefl.order")
-import("xrefl.scheme")
+import("order")
+import("scheme")
 
 function content(target, target_scheme)
     local guard = "XREFL_ANNOTATIONS_" .. target:name():upper():gsub("[^%w]", "_") .. "_H"

@@ -1,7 +1,7 @@
 -- Loads emitter scripts and runs them. An emitter has `emit(unit, out)` and
 -- optionally `emit_target(units, out)`, which runs once per target.
 
-import("xrefl.writer")
+import("writer")
 
 function load_all(scripts)
     local emitters = {}

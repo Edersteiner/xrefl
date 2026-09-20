@@ -1,8 +1,18 @@
 -- Reference emitter: JSON serialization through yyjson. Copy it and change
 -- it. Generates against runtime/xrefl/json_yyjson.h.
 
--- Byte order, so the output is the same on every machine.
-import("xrefl.order")
+-- Byte order, so the output is the same on every machine. Lua's own string
+-- comparison follows the process locale.
+local function bytewise(a, b)
+    local n = math.min(#a, #b)
+    for i = 1, n do
+        local x, y = a:byte(i), b:byte(i)
+        if x ~= y then
+            return x < y
+        end
+    end
+    return #a < #b
+end
 
 local TYPE_ANNOTATION = "REFLECT"
 local FIELD_ANNOTATION = "PROPERTY"
@@ -276,7 +286,7 @@ function emit(unit, out)
     for header in pairs(needed) do
         table.insert(sorted, header)
     end
-    order.sort(sorted)
+    table.sort(sorted, bytewise)
     for _, header in ipairs(sorted) do
         out.header:write("#include \"%s\"\n", header)
     end
@@ -302,7 +312,7 @@ function emit_target(units, out)
     if #records == 0 then
         return
     end
-    table.sort(records, function (a, b) return order.bytewise(a.qualified_name, b.qualified_name) end)
+    table.sort(records, function (a, b) return bytewise(a.qualified_name, b.qualified_name) end)
 
     out.header:write("\n#include <xrefl/json_yyjson.h>\n")
     out.header:write("\n// Every polymorphic type reflected in this target.\n")

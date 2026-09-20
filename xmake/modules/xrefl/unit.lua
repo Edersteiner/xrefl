@@ -3,7 +3,7 @@
 -- declared schema.
 
 import("core.base.json")
-import("xrefl.order")
+import("order")
 
 -- Splits the argument text at the commas between arguments: the ones at
 -- depth zero outside strings. Nothing inside `{}`, `()` or quotes counts.

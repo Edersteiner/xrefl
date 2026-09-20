@@ -1,8 +1,18 @@
 -- Reference emitter: field tables and type registration. Copy it and change
 -- it. Generates against runtime/xrefl/registry.h, which is an example too.
 
--- Byte order, so the output is the same on every machine.
-import("xrefl.order")
+-- Byte order, so the output is the same on every machine. Lua's own string
+-- comparison follows the process locale.
+local function bytewise(a, b)
+    local n = math.min(#a, #b)
+    for i = 1, n do
+        local x, y = a:byte(i), b:byte(i)
+        if x ~= y then
+            return x < y
+        end
+    end
+    return #a < #b
+end
 
 -- Change these to match your scheme.
 local TYPE_ANNOTATION = "REFLECT"
@@ -53,7 +63,7 @@ function emit(unit, out)
     for name in pairs(needed) do
         table.insert(sorted, name)
     end
-    order.sort(sorted)
+    table.sort(sorted, bytewise)
     for _, name in ipairs(sorted) do
         out.header:write("#include \"%s\"\n", name)
     end
@@ -126,7 +136,7 @@ function emit_target(units, out)
             table.insert(records, record)
         end
     end
-    table.sort(records, function (a, b) return order.bytewise(a.qualified_name, b.qualified_name) end)
+    table.sort(records, function (a, b) return bytewise(a.qualified_name, b.qualified_name) end)
 
     out.header:write("\n#include <xrefl/registry.h>\n")
     out.header:write("\n// Every type reflected in this target.\n")

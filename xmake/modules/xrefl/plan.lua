@@ -2,8 +2,8 @@
 -- load time, before parsing, which works because there is one generated file
 -- per header no matter how many emitters run.
 
-import("xrefl.order")
-import("xrefl.paths")
+import("order")
+import("paths")
 
 function headers(target)
     local patterns = target:values("xrefl.headers") or {}

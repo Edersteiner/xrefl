@@ -2,7 +2,7 @@
 -- including anything inherited from a package or dependency.
 
 import("core.base.json")
-import("xrefl.order")
+import("order")
 
 local PAYLOAD_DIR = path.join("share", "xrefl")
 

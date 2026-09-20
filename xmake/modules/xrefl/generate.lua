@@ -4,14 +4,14 @@
 
 import("core.project.depend")
 import("utils.progress")
-import("xrefl.bases")
-import("xrefl.emitter")
-import("xrefl.macros")
-import("xrefl.paths")
-import("xrefl.plan")
-import("xrefl.scheme")
-import("xrefl.toolchain")
-import("xrefl.unit")
+import("bases")
+import("emitter")
+import("macros")
+import("paths")
+import("plan")
+import("scheme")
+import("toolchain")
+import("unit")
 
 -- Rewriting an identical file would recompile everything that includes it.
 function _write_if_changed(filepath, content)

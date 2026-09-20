@@ -25,25 +25,21 @@ rule("reflect")
         local package = assert(target:pkg("xrefl"),
             "the @xrefl/reflect rule needs add_packages(\"xrefl\") on the target")
         local root = path.join(package:installdir(), "share", "xrefl")
+        local modules = path.join(root, "modules")
+        import("xrefl.configure", {rootdir = modules})
+        import("xrefl.plan", {rootdir = modules})
+
+        target:data_set("xrefl.modules", modules)
         target:data_set("xrefl.emitterdir", path.join(root, "emitters"))
-
-        -- The runtime headers the reference emitters generate against.
-        target:add("includedirs", path.join(package:installdir(), "include"), {public = true})
-
-        -- Registered rather than passed as rootdir, so the modules can import
-        -- one another.
-        import("core.sandbox.module")
-        module.add_directories(path.join(root, "modules"))
-
-        import("xrefl.configure")
         configure.apply(target, target:extraconf("rules", "@xrefl/reflect"),
                         target:data("xrefl.emitterdir"))
 
-        import("xrefl.plan")
+        -- The runtime headers the reference emitters generate against.
+        target:add("includedirs", path.join(package:installdir(), "include"), {public = true})
         plan.attach(target)
     end)
 
     before_build(function (target, opt)
-        import("xrefl.generate")
+        import("xrefl.generate", {rootdir = target:data("xrefl.modules")})
         generate.run(target, opt)
     end)
